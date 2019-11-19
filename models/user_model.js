@@ -30,7 +30,7 @@ const sequelize = require('../sequelize_connection').sequelize
      }
  });
 
-User.sync();
+// User.sync();
 
 module.exports.User = User;
 

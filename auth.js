@@ -10,7 +10,6 @@ const router = express.Router();
 router.post('/login', async (req, res) => {
     let user =  await User.findOne({"username": req.body.username});
     if(user === null) return res.status(403).send("Can not find User");
-    console.log(user);
     try {
         if(await bcrypt.compare(req.body.password, user.password)){
             token = jwt.sign({username:user.username}, process.env.ACCESS_TOKEN_SECRET);

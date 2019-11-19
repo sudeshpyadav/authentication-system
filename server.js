@@ -25,9 +25,7 @@ function authenticateToken(req, res, next){
 }
 
 app.get('/users', authenticateToken, async (req, res) => {
-    console.log(User);
     let users = await User.findAll();
-    console.log(users);
     res.json(users);
 });
 

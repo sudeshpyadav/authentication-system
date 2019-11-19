@@ -34,7 +34,7 @@ describe('POST /auth/login', () => {
     })
 });
 
-describe('/GET users', () => {
+describe('GET /users/', () => {
    it('It should get all the users', (done) => {
         chai.request(server).get('/users').set('Authorization', `Beares ${token}`).end((err, res) => {
             res.should.have.status(200);
@@ -43,4 +43,13 @@ describe('/GET users', () => {
             done()
         });
    })
+});
+
+describe('GET /users/', () => {
+    it('Authentication failure', (done) => {
+        chai.request(server).get('/users').end((err, res) => {
+            res.should.have.status(401);
+            done();
+        });
+    })
 });
